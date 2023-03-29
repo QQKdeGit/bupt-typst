@@ -16,24 +16,25 @@
 
 ## 使用方法
 
-进入 [Typst 官网](https://typst.app/) ，并将本模板的文件导入进去，但是你还需要导入 `Times New Roman` 字体，最终你的目录看起来会像是这个样子：
+进入 [Typst 官网](https://typst.app/) ，并将本模板的文件导入进去，但是你还需要导入一些**在线编辑器暂不支持**的字体（比如 `Times New Roman` 和 `楷体`），最终你的目录看起来会像是这个样子：
 
 ```
 - main.typ
 - template.typ
 - Times New Roman Bold.ttf
 - Times New Roman.ttf
+- FZKTK.ttf
 ```
 
 然后只要修改 `main.typ` 就可以了
 
-
+有关字体的更多问题可见 [#416](https://github.com/typst/typst/issues/416)
 
 ## 尚未实现
 
 - [ ] 目录
 - [x] 一级序号和标题居中；二级序号和标题顶格；三级及以下标题“首行缩进” 2 字符
-- [ ] 图片
+- [x] 图片
 - [ ] 表格
 - [ ] 页面脚注（开发人员说后续会加上的 [#222](https://github.com/typst/typst/discussions/222)）
 - [ ] 页码字体改为楷体
@@ -45,3 +46,4 @@
 ## 已知问题
 
 - [x] 默认第一段的段首无法自动空两格，必须要自己额外给第一段添加
+- [ ] 章节无法自动换页，需要手动输入 `#pagebreak()`

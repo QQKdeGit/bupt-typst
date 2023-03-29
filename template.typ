@@ -1,58 +1,62 @@
 // 三号 16pt，小三号 15pt，四号 14pt，小四号 12pt，五号 10.5pt
 
-#let HeiTi = "Noto Sans CJK SC"
-#let SongTi = "Noto Serif CJK SC"
-#let KaiTi = "FZKai-Z03"
+#let FONTSET = (
+  Hei: "Noto Sans CJK SC",
+  Song: "Noto Serif CJK SC",
+  Kai: "FZKai-Z03",
+  English: "Times New Roman",
+)
+// #set text(font: "STIX Two Text")
+
+#let figureCounter = counter("buptFigure")
 
 #let BUPTBachelorThesis(
-  title-zh: "",
-  abstract-zh: "",
-  keywords-zh: (),
+  titleZH: "",
+  abstractZH: "",
+  keywordsZH: (),
 
-  title-en: "",
-  abstract-en: "",
-  keywords-en: (),
+  titleEN: "",
+  abstractEN: "",
+  keywordsEN: (),
 
   bibliography-file: none,
 
   body
 ) = {
   set page(paper: "a4", margin: 2.5cm)
-
+  set text(font: (FONTSET.at("English"), FONTSET.at("Song")), weight: "regular", size: 12pt)
+  
   // =========== Chinese abstract ===========
-  set text(font: HeiTi, weight: "bold")
   align(center)[
-      #text(size: 16pt, title-zh) \ \
+      #set text(font: FONTSET.at("Hei"), weight: "bold")
+      #text(size: 16pt, titleZH) \ \
       #text(size: 15pt, tracking: 1em, "摘要") \ \
   ]
 
-  set text(font: ("Times New Roman", SongTi), weight: "regular", size: 12pt)
   set par(first-line-indent: 2em, leading: 1.2em)
   show par: set block(spacing: 1.2em)
-  abstract-zh
+  abstractZH
 
   [\ \ ]
-  text(font: HeiTi, weight: "bold", size: 12pt, "关键词")
+  text(font: FONTSET.at("Hei"), weight: "bold", size: 12pt, "关键词")
   text(size: 12pt,
-    for value in keywords-zh {
+    for value in keywordsZH {
       h(1em) + value
     }
   )
   pagebreak()
 
   // =========== English abstract ===========
-  set text(font: "Times New Roman", weight: "bold")
   align(center)[
-      #text(size: 16pt, title-en) \ \
-      #text(size: 15pt, "ABSTRACT") \ \
+      #text(weight: "bold", size: 16pt, titleEN) \ \
+      #text(weight: "bold", size: 15pt, "ABSTRACT") \ \
   ]
-  set text(font: "Times New Roman", weight: "regular", size: 12pt)
-  abstract-en
+  abstractEN
 
   [\ \ ]
-  text(font: "Times New Roman", weight: "bold", size: 12pt, "KEY WORDS")
+  text(weight: "bold", size: 12pt, "KEY WORDS")
   text(size: 12pt,
-    for value in keywords-en {
+    for value in keywordsEN {
       h(1em) + value
     }
   )
@@ -63,7 +67,7 @@
   counter(page).update(1)
   align(center)[
     #outline(
-      title: text(font: HeiTi, weight: "bold", tracking: 2em, size: 16pt, [目录\ \ ]),
+      title: text(font: FONTSET.at("Hei"), weight: "bold", tracking: 2em, size: 16pt, [目录\ \ ]),
       depth: 3,
     )
   ]
@@ -83,9 +87,12 @@
 
     // reset par first
     set par(first-line-indent: 0em)
-    set text(font: HeiTi, weight: "bold")
+    set text(font: FONTSET.at("Hei"), weight: "bold")
     
     if it.level == 1 {
+      // reset figure counter
+      figureCounter.update(1)
+      
       align(center)[
         #text(size: 16pt, [第#chineseNumMap(levels.at(0))章#h(1em)#it.body])
       ]
@@ -103,4 +110,28 @@
   set page(numbering: "1")
   counter(page).update(1)
   body
+}
+
+#let buptFigure(
+  file,
+  caption,
+  width,
+) = {
+  show figure: it => locate(loc => {
+    let chapterLevel = counter(heading).at(loc).at(0)
+
+    align(center)[
+      #it.body
+      #text(
+        font: (FONTSET.at("English"), FONTSET.at("Kai")),
+        [图 #chapterLevel\-#figureCounter.display() #caption]
+      )
+    ]
+    
+    figureCounter.step()
+  })
+  
+  figure(
+      image(file, width: width)
+  )
 }

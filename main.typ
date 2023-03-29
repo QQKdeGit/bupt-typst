@@ -1,23 +1,23 @@
 #import "template.typ": *
 
 #show: BUPTBachelorThesis.with(
-  title-zh: "这是一个毕业设计的中文标题",
-  abstract-zh: [
+  titleZH: "这是一个毕业设计的中文标题",
+  abstractZH: [
     中文摘要。
     
     长中文摘要长中文摘要长中文摘要长中文摘要长中文摘要长中文摘要长中文摘要长中文摘要长中文摘要。
     
     中 English 混杂测试。
   ],
-  keywords-zh: ("北京邮电大学", "本科生", "毕业设计", "模板", "示例"),
+  keywordsZH: ("北京邮电大学", "本科生", "毕业设计", "模板", "示例"),
 
-  title-en: "This is English Title",
-  abstract-en: [
+  titleEN: "This is English Title",
+  abstractEN: [
     English Abstract.
     
     Long English Abstract Long English Abstract Long English Abstract Long English Abstract Long English Abstract.
   ],
-  keywords-en: ("BUPT", "undergraduate", "thesis", "template", "example"),
+  keywordsEN: ("BUPT", "undergraduate", "thesis", "template", "example"),
 )
 
 = 一级标题
@@ -38,7 +38,7 @@
 === 三级标题2
 #lorem(20)
 
-
+#pagebreak()
 = 一级标题2
 #lorem(20)
 
