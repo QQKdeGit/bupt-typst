@@ -8,7 +8,8 @@
 )
 // #set text(font: "STIX Two Text")
 
-#let figureCounter = counter("buptFigure")
+#let figureCounter = counter("Figure")
+#let equationCounter = counter("Equation")
 
 #let BUPTBachelorThesis(
   titleZH: "",
@@ -23,9 +24,29 @@
 
   body
 ) = {
+  // =========== Configure pages ===========
   set page(paper: "a4", margin: 2.5cm)
   set text(font: (FONTSET.at("English"), FONTSET.at("Song")), weight: "regular", size: 12pt)
-  
+
+  // =========== Configure equation ===========
+  show math.equation: it => locate(loc => {
+    let chapterLevel = counter(heading).at(loc).at(0)
+
+    grid(
+      columns: (100pt, 1fr, 100pt),
+      [],
+      align(center, it),
+      align(right)[
+        #text(
+          font: (FONTSET.at("English"), FONTSET.at("Song")),
+          [式（#chapterLevel\-#equationCounter.display()）]
+        )
+      ]
+    )
+
+    equationCounter.step()
+  })
+
   // =========== Chinese abstract ===========
   align(center)[
       #set text(font: FONTSET.at("Hei"), weight: "bold")
@@ -92,6 +113,7 @@
     if it.level == 1 {
       // reset figure counter
       figureCounter.update(1)
+      equationCounter.update(1)
       
       align(center)[
         #text(size: 16pt, [第#chineseNumMap(levels.at(0))章#h(1em)#it.body])
@@ -112,7 +134,7 @@
   body
 }
 
-#let buptFigure(
+#let Figure(
   file,
   caption,
   width,
@@ -124,6 +146,7 @@
       #it.body
       #text(
         font: (FONTSET.at("English"), FONTSET.at("Kai")),
+        size: 10.5pt,
         [图 #chapterLevel\-#figureCounter.display() #caption]
       )
     ]

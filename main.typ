@@ -20,36 +20,18 @@
   keywordsEN: ("BUPT", "undergraduate", "thesis", "template", "example"),
 )
 
-= 一级标题
-#lorem(20)
+= 基础模块
 
-== 二级标题
-#lorem(20)
+== 图示例
 
-=== 三级标题
-#lorem(20)
+#Figure("images/bupt.png", "label", 30%)
 
-==== 四级标题
-#lorem(10)
+这是一个北邮校徽。
 
-== 二级标题2
-#lorem(20)
+== 公式示例
 
-=== 三级标题2
-#lorem(20)
+下方是一个简单的求圆的面积的公式：
 
-#pagebreak()
-= 一级标题2
-#lorem(20)
+$ S = pi r^2 $
 
-== 二级标题
-#lorem(20)
-
-=== 三级标题
-#lorem(20)
-
-== 二级标题2
-#lorem(20)
-
-=== 三级标题2
-#lorem(20)
+语法跟 Markdown 很像，比较容易上手。注意到了吗？这里并没有自动段首空格。要想在公式后开启新的一段，需要自己手动输入换行符“\\”。
