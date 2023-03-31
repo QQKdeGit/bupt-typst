@@ -1,14 +1,15 @@
 // 三号 16pt，小三号 15pt，四号 14pt，小四号 12pt，五号 10.5pt，小五号 9pt
 
 #let FONTSET = (
-  Hei: "Noto Sans CJK SC",
-  Song: "Noto Serif CJK SC",
-  Kai: "FZKai-Z03",
+  Hei:     "Noto Sans CJK SC",
+  Song:    "Noto Serif CJK SC",
+  Kai:     "FZKai-Z03",
   English: "Times New Roman",
 )
 // #set text(font: "STIX Two Text")
 
-#let figureCounter = counter("Figure")
+#let tableCounter    = counter("Table")
+#let figureCounter   = counter("Figure")
 #let equationCounter = counter("Equation")
 
 #let BUPTBachelorThesis(
@@ -44,6 +45,12 @@
 
     equationCounter.step()
   })
+
+  // 代码
+  show raw.where(block: true): it => {
+    set block(stroke: 0.5pt, width: 100%, inset: 1em)
+    it
+  }
 
   // 中文摘要
   align(center)[
@@ -109,6 +116,7 @@
     
     if it.level == 1 {
       // 重置计数器
+      tableCounter.update(1)
       figureCounter.update(1)
       equationCounter.update(1)
 
@@ -178,5 +186,30 @@
   
   figure(
       image(file, width: width)
+  )
+}
+
+#let Table(caption, columnsSet, alignSet, body) = {
+  show table: it => locate(loc => {
+    let chapterLevel = counter(heading).at(loc).at(0)
+    
+    align(center)[
+      #text(
+        font: (FONTSET.at("English"), FONTSET.at("Kai")),
+        size: 10.5pt,
+        [表 #chapterLevel\-#tableCounter.display() #caption]
+      )
+      #it
+    ]
+
+    tableCounter.step()
+  })
+
+  table(
+    columns: columnsSet,
+    align: alignSet,
+    inset: 8pt,
+    stroke: 0.5pt,
+    ..body
   )
 }
