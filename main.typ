@@ -21,8 +21,6 @@
     The quick brown fox jumps over the lazy dog and runs away. The quick brown fox jumps over the lazy dog and runs away. The quick brown fox jumps over the lazy dog and runs away. 
   ],
   keywordsEN: ("BUPT", "undergraduate", "thesis", "template", "example"),
-
-  bibliographyFile: "reference.bib",
 )
 
 // 正文

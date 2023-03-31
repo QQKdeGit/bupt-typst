@@ -237,7 +237,7 @@
     text(font: FONTSET.at("English"), super(it))
   }
 
-  // =========== Page header and footer ===========
+  // 页眉页脚
   set page(
     header: [
       #align(center)[
