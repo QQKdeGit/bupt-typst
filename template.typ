@@ -237,6 +237,28 @@
     text(font: FONTSET.at("English"), super(it))
   }
 
+  // =========== Page header and footer ===========
+  set page(
+    header: [
+      #align(center)[
+        #pad(bottom: -4pt)[
+          #pad(bottom: -8pt,
+            text(font: FONTSET.at("Song"), size: 9pt, "北京邮电大学本科毕业设计(论文)")
+          )
+          #line(length: 100%, stroke: 0.5pt)
+        ]
+      ]
+    ],
+    footer: [
+      #align(center)[
+        #text(font: FONTSET.at("English"), size: 9pt)[
+          #counter(page).display()
+        ]
+      ]
+    ]
+  )
+  counter(page).update(1)
+
   // 页眉页脚
   set page(
     header: [
