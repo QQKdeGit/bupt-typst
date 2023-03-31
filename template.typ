@@ -1,4 +1,4 @@
-// 三号 16pt，小三号 15pt，四号 14pt，小四号 12pt，五号 10.5pt
+// 三号 16pt，小三号 15pt，四号 14pt，小四号 12pt，五号 10.5pt，小五号 9pt
 
 #let FONTSET = (
   Hei: "Noto Sans CJK SC",
@@ -92,7 +92,6 @@
       depth: 3,
     )
   ]
-  pagebreak()
 
   // =========== Configure headings ===========
   let chineseNumMap(num) = {
@@ -133,9 +132,29 @@
     text(font: FONTSET.at("English"), super(it))
   }
 
-  // =========== Contents ===========
-  set page(numbering: "1")
+  // =========== Page header and footer ===========
+  set page(
+    header: [
+      #align(center)[
+        #pad(bottom: -4pt)[
+          #pad(bottom: -8pt,
+            text(font: FONTSET.at("Song"), size: 9pt, "北京邮电大学本科毕业设计(论文)")
+          )
+          #line(length: 100%, stroke: 0.5pt)
+        ]
+      ]
+    ],
+    footer: [
+      #align(center)[
+        #text(font: FONTSET.at("English"), size: 9pt)[
+          #counter(page).display()
+        ]
+      ]
+    ]
+  )
   counter(page).update(1)
+
+  // =========== Contents ===========
   body
 
   // =========== Bibliography ===========
