@@ -1,4 +1,5 @@
 #import "template.typ": *
+#import "appendix.typ": *
 
 #show: BUPTBachelorThesis.with(
   titleZH: "这是一个毕业设计的中文标题",
@@ -18,10 +19,9 @@
     Long English Abstract Long English Abstract Long English Abstract Long English Abstract Long English Abstract.
   ],
   keywordsEN: ("BUPT", "undergraduate", "thesis", "template", "example"),
-
-  bibliographyFile: "reference.bib",
 )
 
+// 正文
 = 基础模块
 
 == 图示例
@@ -41,3 +41,24 @@ $ S = pi r^2 $
 == 引用示例
 
 这是一个参考文献的引用@webster_social_media 。但是具体的格式还不正确。
+
+// 附页
+#show: Appendix.with(
+  bibliographyFile: "reference.bib"
+)
+
+#pagebreak()
+= 致#h(2em)谢
+
+谢谢你北邮，因为有你，温暖了四季。
+
+#pagebreak()
+= 附#h(2em)录
+
+== 附录1
+
+这是一个附录内容，学校规定附录的二级标题得是附录1、附录2这样子。
+
+#pagebreak()
+= 外#h(1em)文#h(1em)译#h(1em)文
+

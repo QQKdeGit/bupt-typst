@@ -20,15 +20,13 @@
   abstractEN: "",
   keywordsEN: (),
 
-  bibliographyFile: none,
-
   body
 ) = {
-  // =========== Configure pages ===========
+  // 页面配置
   set page(paper: "a4", margin: 2.5cm)
   set text(font: (FONTSET.at("English"), FONTSET.at("Song")), weight: "regular", size: 12pt)
 
-  // =========== Configure equation ===========
+  // 数学公式
   show math.equation: it => locate(loc => {
     let chapterLevel = counter(heading).at(loc).at(0)
 
@@ -47,7 +45,7 @@
     equationCounter.step()
   })
 
-  // =========== Chinese abstract ===========
+  // 中文摘要
   align(center)[
       #set text(font: FONTSET.at("Hei"), weight: "bold")
       #text(size: 16pt, titleZH) \ \
@@ -67,7 +65,7 @@
   )
   pagebreak()
 
-  // =========== English abstract ===========
+  // 英文摘要
   align(center)[
       #text(weight: "bold", size: 16pt, titleEN) \ \
       #text(weight: "bold", size: 15pt, "ABSTRACT") \ \
@@ -83,7 +81,7 @@
   )
   pagebreak()
 
-  // =========== Table of content ===========
+  // 目录
   set page(numbering: "I")
   counter(page).update(1)
   align(center)[
@@ -93,7 +91,7 @@
     )
   ]
 
-  // =========== Configure headings ===========
+  // 章节标题配置
   let chineseNumMap(num) = {
     let chineseNum = (
       "一", "二", "三", "四", "五", "六", "七", "八", "九", "十",
@@ -105,12 +103,12 @@
   show heading: it => locate(loc => {
     let levels = counter(heading).at(loc)
 
-    // reset par first
+    // 重置段首空格
     set par(first-line-indent: 0em)
     set text(font: FONTSET.at("Hei"), weight: "bold")
     
     if it.level == 1 {
-      // reset figure counter
+      // 重置计数器
       figureCounter.update(1)
       equationCounter.update(1)
 
@@ -127,12 +125,12 @@
     }
   })
 
-  // =========== Citation ===========
+  // 引用
   show cite: it => {
     text(font: FONTSET.at("English"), super(it))
   }
 
-  // =========== Page header and footer ===========
+  // 页眉页脚
   set page(
     header: [
       #align(center)[
@@ -154,24 +152,8 @@
   )
   counter(page).update(1)
 
-  // =========== Contents ===========
+  // 正文
   body
-
-  // =========== Bibliography ===========
-  show heading: it => {
-    pagebreak()
-    align(center)[
-      #text(font: FONTSET.at("Hei"), size: 16pt, it.body) \ \
-    ]
-  }
-  
-  if bibliographyFile != none {
-    bibliography(bibliographyFile, title: "参考文献")
-    
-    show bibliography: it => {
-      set text(font: (FONTSET.at("English"), FONTSET.at("Song")), size: 10.5pt)
-    }
-  }
 }
 
 #let Figure(
