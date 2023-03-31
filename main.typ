@@ -18,6 +18,8 @@
     Long English Abstract Long English Abstract Long English Abstract Long English Abstract Long English Abstract.
   ],
   keywordsEN: ("BUPT", "undergraduate", "thesis", "template", "example"),
+
+  bibliographyFile: "reference.bib",
 )
 
 = 基础模块
@@ -35,3 +37,7 @@
 $ S = pi r^2 $
 
 语法跟 Markdown 很像，比较容易上手。注意到了吗？这里并没有自动段首空格。要想在公式后开启新的一段，需要自己手动输入换行符“\\”。
+
+== 引用示例
+
+这是一个参考文献的引用@webster_social_media 。但是具体的格式还不正确。

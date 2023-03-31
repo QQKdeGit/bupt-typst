@@ -20,7 +20,7 @@
   abstractEN: "",
   keywordsEN: (),
 
-  bibliography-file: none,
+  bibliographyFile: none,
 
   body
 ) = {
@@ -114,7 +114,7 @@
       // reset figure counter
       figureCounter.update(1)
       equationCounter.update(1)
-      
+
       align(center)[
         #text(size: 16pt, [第#chineseNumMap(levels.at(0))章#h(1em)#it.body])
       ]
@@ -128,10 +128,31 @@
     }
   })
 
+  // =========== Citation ===========
+  show cite: it => {
+    text(font: FONTSET.at("English"), super(it))
+  }
+
   // =========== Contents ===========
   set page(numbering: "1")
   counter(page).update(1)
   body
+
+  // =========== Bibliography ===========
+  show heading: it => {
+    pagebreak()
+    align(center)[
+      #text(font: FONTSET.at("Hei"), size: 16pt, it.body) \ \
+    ]
+  }
+  
+  if bibliographyFile != none {
+    bibliography(bibliographyFile, title: "参考文献")
+    
+    show bibliography: it => {
+      set text(font: (FONTSET.at("English"), FONTSET.at("Song")), size: 10.5pt)
+    }
+  }
 }
 
 #let Figure(
