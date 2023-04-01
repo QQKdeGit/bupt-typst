@@ -5,7 +5,6 @@
   
   body
 ) = {
-  set heading(numbering: none, outlined: false)
   show heading: it => locate(loc => {
     set par(first-line-indent: 0em)
     

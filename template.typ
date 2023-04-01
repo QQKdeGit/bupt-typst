@@ -89,23 +89,59 @@
   pagebreak()
 
   // 目录
-  set page(numbering: "I")
-  counter(page).update(1)
-  align(center)[
-    #outline(
-      title: text(font: FONTSET.at("Hei"), weight: "bold", tracking: 2em, size: 16pt, [目录\ \ ]),
-      depth: 3,
-    )
-  ]
-
-  // 章节标题配置
   let chineseNumMap(num) = {
     let chineseNum = (
       "一", "二", "三", "四", "五", "六", "七", "八", "九", "十",
       "十一", "十二", "十三", "十四", "十五", "十六", "十七", "十八", "十九", "二十")
     chineseNum.at(num - 1)
   }
-  
+
+  set page(numbering: "I")
+  counter(page).update(1)
+
+  show outline: it => locate(loc => {
+    set par(first-line-indent: 0em)
+
+    align(center)[
+      #text(font: FONTSET.at("Hei"), weight: "bold", tracking: 2em, size: 16pt, [目录\ \ ])
+    ]
+
+    let chapterCounter    = 1
+    let sectionCounter    = 1
+    let subsectionCounter = 1
+
+    let headingList = query(heading, after: loc)
+    for i in headingList {
+      if i.outlined == false {
+        break
+      }
+
+      if i.level == 1 {
+        set text(font: (FONTSET.at("English"), FONTSET.at("Hei")), size: 12pt, weight: "bold")
+
+        if i.body != [参考文献] and i.body != [致#h(2em)谢] and i.body != [附#h(2em)录] {
+          [第#chineseNumMap(chapterCounter)章#h(1em)]
+        }
+        [#i.body#box(width: 1fr, repeat[.])#calc.abs(i.location().page() - loc.page())\ ]
+
+        chapterCounter = chapterCounter + 1
+        sectionCounter = 1
+      } else if i.level == 2 {
+        [#h(1em)#calc.abs(chapterCounter - 1)\.#sectionCounter#h(1em)#i.body#box(width: 1fr, repeat[.])#calc.abs(i.location().page() - loc.page())\ ]
+
+        sectionCounter += 1
+        subsectionCounter = 1
+      } else if i.level == 3 {
+        [#h(2em)#calc.abs(chapterCounter - 1)\.#calc.abs(sectionCounter - 1)\.#subsectionCounter#h(1em)#i.body#box(width: 1fr, repeat[.])#calc.abs(i.location().page() - loc.page())\ ]
+
+        subsectionCounter += 1
+      }
+    }
+  })
+
+  outline(title: none, depth: 3, indent: true)  
+
+  // 章节标题配置  
   set heading(numbering: "1.1")
   show heading: it => locate(loc => {
     let levels = counter(heading).at(loc)
@@ -113,7 +149,7 @@
     // 重置段首空格
     set par(first-line-indent: 0em)
     set text(font: FONTSET.at("Hei"), weight: "bold")
-    
+
     if it.level == 1 {
       // 重置计数器
       tableCounter.update(1)
@@ -180,10 +216,10 @@
         [图 #chapterLevel\-#figureCounter.display() #caption]
       )
     ]
-    
+
     figureCounter.step()
   })
-  
+
   figure(
       image(file, width: width)
   )
@@ -192,7 +228,7 @@
 #let Table(caption, columnsSet, alignSet, body) = {
   show table: it => locate(loc => {
     let chapterLevel = counter(heading).at(loc).at(0)
-    
+
     align(center)[
       #text(
         font: (FONTSET.at("English"), FONTSET.at("Kai")),
