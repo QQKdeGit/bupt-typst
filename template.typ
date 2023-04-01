@@ -146,17 +146,17 @@
         if i.body != [参考文献] and i.body != [致#h(2em)谢] and i.body != [附#h(2em)录] {
           [第#chineseNumMap(chapterCounter)章#h(1em)]
         }
-        [#i.body#box(width: 1fr, repeat[.])#calc.abs(i.location().page() - loc.page())\ ]
+        [#i.body #box(width: 1fr, repeat[.]) #calc.abs(i.location().page() - loc.page())\ ]
 
         chapterCounter = chapterCounter + 1
         sectionCounter = 1
       } else if i.level == 2 {
-        [#h(1em)#calc.abs(chapterCounter - 1)\.#sectionCounter#h(1em)#i.body#box(width: 1fr, repeat[.])#calc.abs(i.location().page() - loc.page())\ ]
+        [#h(1em)#calc.abs(chapterCounter - 1)\.#sectionCounter#h(1em)#i.body #box(width: 1fr, repeat[.]) #calc.abs(i.location().page() - loc.page())\ ]
 
         sectionCounter += 1
         subsectionCounter = 1
       } else if i.level == 3 {
-        [#h(2em)#calc.abs(chapterCounter - 1)\.#calc.abs(sectionCounter - 1)\.#subsectionCounter#h(1em)#i.body#box(width: 1fr, repeat[.])#calc.abs(i.location().page() - loc.page())\ ]
+        [#h(2em)#calc.abs(chapterCounter - 1)\.#calc.abs(sectionCounter - 1)\.#subsectionCounter#h(1em)#i.body #box(width: 1fr, repeat[.]) #calc.abs(i.location().page() - loc.page())\ ]
 
         subsectionCounter += 1
       }
