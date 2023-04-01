@@ -92,11 +92,35 @@
   let chineseNumMap(num) = {
     let chineseNum = (
       "一", "二", "三", "四", "五", "六", "七", "八", "九", "十",
-      "十一", "十二", "十三", "十四", "十五", "十六", "十七", "十八", "十九", "二十")
+      "十一", "十二", "十三", "十四", "十五", "十六", "十七", "十八", "十九", "二十",
+      "二十一", "二十二", "二十三", "二十四", "二十五", "二十六", "二十七", "二十八", "二十九", "三十",
+      "三十一", "三十二", "三十三", "三十四", "三十五", "三十六", "三十七", "三十八", "三十九", "四十",
+    )
     chineseNum.at(num - 1)
   }
 
-  set page(numbering: "I")
+  let romanNumMap(num) = {
+    let romanNum = (
+      "I", "II", "III", "IV", "V", "VI", "VII", "VIII", "IX", "X",
+      "XI", "XII", "XIII", "XIV", "XV", "XVI", "XVII", "XVIII", "XIX", "XX",
+      "XXI", "XXII", "XXIII", "XXIV", "XXV", "XXVI", "XXVII", "XXVIII", "XXIX", "XXX",
+      "XXXI", "XXXII", "XXXIII", "XXXIV", "XXXV", "XXXVI", "XXXVII", "XXXVIII", "XXXIX", "XL",
+    )
+    romanNum.at(num - 1)
+  }
+
+  set page(
+    footer: locate(loc => {
+      [
+        #align(center)[
+          #text(font: FONTSET.at("English"), size: 9pt)[
+            // 这里默认了摘要只有 2 页
+            #romanNumMap(calc.abs(loc.page() - 2))
+          ]
+        ]
+      ]
+    })
+  )
   counter(page).update(1)
 
   show outline: it => locate(loc => {
