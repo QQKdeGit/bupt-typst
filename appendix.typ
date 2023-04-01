@@ -1,8 +1,6 @@
 #import "template.typ": *
 
 #let Appendix(
-  bibliographyFile: none,
-  
   body
 ) = {
   show heading: it => locate(loc => {
@@ -18,17 +16,6 @@
       text(size: 14pt, it.body)
     }
   })
-
-  // 参考文献
-  if bibliographyFile != none {
-    pagebreak()
-    [= 参考文献]
-    
-    bibliography(bibliographyFile, title: none)
-    show bibliography: it => {
-      set text(font: (FONTSET.at("English"), FONTSET.at("Song")), size: 10.5pt)
-    }
-  }
 
   body
 }

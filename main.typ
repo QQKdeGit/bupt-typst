@@ -60,13 +60,13 @@ $ S = pi r^2 $
 
 == 引用示例
 
-这是一个参考文献的引用@webster_social_media 。但是具体的格式还不正确。
+这是一个参考文献的引用#super([[1]])。
 
 == 代码示例
 
 这是一段用示例代码。
 
-```cpp
+```c
 void setFib(void)
 {
   fib(1 | 2 | 3 | 5 | 8 | 13 | 21 | 34 | 55 | 89, 10);
@@ -76,9 +76,30 @@ void setFib(void)
 Typst 还支持书写行内的代码，就像 Markdown 一样，比如 `return n * f(n - 1)` 。
 
 // 附页
-#show: Appendix.with(
-  bibliographyFile: "reference.bib"
-)
+#show: Appendix.with()
+
+#pagebreak()
+= 参考文献
+
+#text(font: (FONTSET.at("English"), FONTSET.at("Song")), size: 10.5pt)[
+  // 专著中的文献
+  [1] 作者.专著名称[M].版本(第1版不加标注).出版者.出版年:参考页码.
+
+  // 期刊中的文献
+  [2] 作者.文献名称.期刊名称[J].卷号（期号）.年,月:页码范围.
+
+  // 论文集
+  [3] 作者.论文题目[C].见(英文用 In).主编.论文集名.出版地.出版年:页码范围.
+
+  // 学位论文
+  [4] 作者.题目[D].(英文用[Dissertation])保存地点.保存单位:年份.
+
+  // 专利
+  [5] 专利申请者.题目[P].国别.专利文献种类.专利号.批准日期.
+
+  // 技术标准
+  [6] 起草责任者.标准代号.标准顺序号-发布年.标准名称[S].出版地.出版者.出版年度.
+]
 
 #pagebreak()
 = 致#h(2em)谢
@@ -97,4 +118,3 @@ Typst 还支持书写行内的代码，就像 Markdown 一样，比如 `return n
 
 #pagebreak()
 = 外#h(1em)文#h(1em)译#h(1em)文
-
