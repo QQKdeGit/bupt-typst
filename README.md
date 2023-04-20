@@ -30,7 +30,7 @@
 
 进入 Typst 的 GitHub 仓库，下载 [release](https://github.com/typst/typst/releases) ，解压出 `typst.exe` 放入根目录。
 
-更多使用信息见仓库的 README.md 。
+更多本地编译的使用信息见 [Typst](https://github.com/typst/typst) 仓库的 README.md 。
 
 ## 已知问题
 
