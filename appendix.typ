@@ -24,9 +24,11 @@
     pagebreak()
     [= 参考文献]
     
+    set text(font: (FONTSET.at("English"), FONTSET.at("Song")), size: 10.5pt)
+    set par(first-line-indent: 0em)
     bibliography(bibliographyFile, title: none)
     show bibliography: it => {
-      set text(font: (FONTSET.at("English"), FONTSET.at("Song")), size: 10.5pt)
+
     }
   }
 
