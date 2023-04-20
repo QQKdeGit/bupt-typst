@@ -1,5 +1,4 @@
 #import "template.typ": *
-#import "appendix.typ": *
 
 #show: BUPTBachelorThesis.with(
   titleZH: "这是一个毕业设计的中文标题",
@@ -82,6 +81,8 @@ Typst 还支持书写行内的代码，就像 Markdown 一样，比如 `return n
 = 参考文献
 
 #text(font: (FONTSET.at("English"), FONTSET.at("Song")), size: 10.5pt)[
+  #set par(first-line-indent: 0em)
+  
   // 专著中的文献
   [1] 作者.专著名称[M].版本(第1版不加标注).出版者.出版年:参考页码.
 
