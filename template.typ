@@ -134,7 +134,7 @@
     let sectionCounter    = 1
     let subsectionCounter = 1
 
-    let headingList = query(heading, after: loc)
+    let headingList = query(selector(heading).after(loc), loc)
     for i in headingList {
       if i.outlined == false {
         break
