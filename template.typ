@@ -36,14 +36,14 @@
         columns: (100pt, 1fr, 100pt),
         [],
         align(center, it),
-        align(right)[
+        align(horizon + right)[
           #text(
             font: (FONTSET.at("English"), FONTSET.at("Song")),
             [式（#chapterLevel\-#equationCounter.display()）]
           )
         ]
       )
-      
+
       equationCounter.step()
     })
   } else {
