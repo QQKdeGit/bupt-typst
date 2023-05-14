@@ -27,24 +27,28 @@
   set page(paper: "a4", margin: 2.5cm)
   set text(font: (FONTSET.at("English"), FONTSET.at("Song")), weight: "regular", size: 12pt)
 
-  // 数学公式
-  show math.equation: it => locate(loc => {
-    let chapterLevel = counter(heading).at(loc).at(0)
+   // 数学公式
+  show math.equation: it => if it.block {
+    locate(loc => {
+      let chapterLevel = counter(heading).at(loc).at(0)
 
-    grid(
-      columns: (100pt, 1fr, 100pt),
-      [],
-      align(center, it),
-      align(right)[
-        #text(
-          font: (FONTSET.at("English"), FONTSET.at("Song")),
-          [式（#chapterLevel\-#equationCounter.display()）]
-        )
-      ]
-    )
+      grid(
+        columns: (100pt, 1fr, 100pt),
+        [],
+        align(center, it),
+        align(horizon + right)[
+          #text(
+            font: (FONTSET.at("English"), FONTSET.at("Song")),
+            [式（#chapterLevel\-#equationCounter.display()）]
+          )
+        ]
+      )
 
-    equationCounter.step()
-  })
+      equationCounter.step()
+    })
+  } else {
+    it
+  }
 
   // 代码
   show raw.where(block: true): it => {
