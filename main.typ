@@ -2,7 +2,7 @@
 #import "appendix.typ": *
 
 #show: BUPTBachelorThesis.with(
-  titleZH: "这是一个毕业设计的中文标题",
+  titleZH: "这是一个本科毕业设计的中文标题",
   abstractZH: [
     中文摘要。
     
@@ -28,7 +28,8 @@
 
 == 图示例
 
-#Figure("images/bupt.png", "北京邮电大学校徽", 30%)
+=== 三级标题
+
 
 这是一幅图。
 
@@ -60,7 +61,7 @@ $ S = pi r^2 $
 
 == 引用示例
 
-这是一个参考文献的引用@webster_social_media 。但是具体的格式还不正确。
+这是一个参考文献的引用@webster_social_media 。但是具体的格式还不正确。@cn_ref
 
 == 代码示例
 

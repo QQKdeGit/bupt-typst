@@ -1,10 +1,15 @@
-// 三号 16pt，小三号 15pt，四号 14pt，小四号 12pt，五号 10.5pt，小五号 9pt
+// 三号     16pt
+// 小三号   15pt
+// 四号     14pt
+// 小四号   12pt
+// 五号     10.5pt
+// 小五号    9pt
 
 #let FONTSET = (
-  Hei:     "Noto Sans CJK SC",
-  Song:    "Noto Serif CJK SC",
-  Kai:     "FZKai-Z03",
   English: "Times New Roman",
+  Hei:     "Source Han Sans SC",
+  Song:    "Source Han Serif SC",
+  Kai:     "STKaiti",
 )
 // #set text(font: "STIX Two Text")
 
@@ -54,7 +59,7 @@
 
   // 中文摘要
   align(center)[
-      #set text(font: FONTSET.at("Hei"), weight: "bold")
+      #set text(font: (FONTSET.at("English"), FONTSET.at("Hei")), weight: "semibold")
       #text(size: 16pt, titleZH) \ \
       #text(size: 15pt, tracking: 1em, "摘要") \ \
   ]
@@ -64,7 +69,7 @@
   abstractZH
 
   [\ \ ]
-  text(font: FONTSET.at("Hei"), weight: "bold", size: 12pt, "关键词")
+  text(font: FONTSET.at("Hei"), weight: "semibold", size: 12pt, "关键词")
   text(size: 12pt,
     for value in keywordsZH {
       h(1em) + value
@@ -74,13 +79,13 @@
 
   // 英文摘要
   align(center)[
-      #text(weight: "bold", size: 16pt, titleEN) \ \
-      #text(weight: "bold", size: 15pt, "ABSTRACT") \ \
+      #text(weight: "semibold", size: 16pt, titleEN) \ \
+      #text(weight: "semibold", size: 15pt, "ABSTRACT") \ \
   ]
   abstractEN
 
   [\ \ ]
-  text(weight: "bold", size: 12pt, "KEY WORDS")
+  text(weight: "semibold", size: 12pt, "KEY WORDS")
   text(size: 12pt,
     for value in keywordsEN {
       h(1em) + value
@@ -127,7 +132,7 @@
     set par(first-line-indent: 0em)
 
     align(center)[
-      #text(font: FONTSET.at("Hei"), weight: "bold", tracking: 2em, size: 16pt, [目录\ \ ])
+      #text(font: (FONTSET.at("English"), FONTSET.at("Hei")), weight: "semibold", tracking: 2em, size: 16pt, [目录\ \ ])
     ]
 
     let chapterCounter    = 1
@@ -141,7 +146,7 @@
       }
 
       if i.level == 1 {
-        set text(font: (FONTSET.at("English"), FONTSET.at("Hei")), size: 12pt, weight: "bold")
+        set text(font: (FONTSET.at("English"), FONTSET.at("Hei")), size: 12pt, weight: "semibold")
 
         if i.body != [参考文献] and i.body != [致#h(2em)谢] and i.body != [附#h(2em)录] {
           [第#chineseNumMap(chapterCounter)章#h(1em)]
@@ -172,7 +177,7 @@
 
     // 重置段首空格
     set par(first-line-indent: 0em)
-    set text(font: FONTSET.at("Hei"), weight: "bold")
+    set text(font: (FONTSET.at("English"), FONTSET.at("Hei")), weight: "semibold")
 
     if it.level == 1 {
       // 重置计数器
@@ -195,7 +200,7 @@
 
   // 引用
   show cite: it => {
-    text(font: FONTSET.at("English"), super(it))
+    text(font: (FONTSET.at("English"), FONTSET.at("Song")), super(it))
   }
 
   // 页眉页脚
@@ -204,7 +209,7 @@
       #align(center)[
         #pad(bottom: -4pt)[
           #pad(bottom: -8pt,
-            text(font: FONTSET.at("Song"), size: 9pt, "北京邮电大学本科毕业设计(论文)")
+            text(font: FONTSET.at("Song"), size: 9pt, "北京邮电大学本科毕业设计 (论文)")
           )
           #line(length: 100%, stroke: 0.5pt)
         ]
