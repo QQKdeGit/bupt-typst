@@ -26,7 +26,11 @@
     
     set text(font: (FONTSET.at("English"), FONTSET.at("Song")), size: 10.5pt)
     set par(first-line-indent: 0em)
-    bibliography(bibliographyFile, title: none)
+    bibliography(
+      bibliographyFile, 
+      title: none,
+      style: "gb-7114-2015-numeric"
+    )
     show bibliography: it => {
 
     }

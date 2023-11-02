@@ -87,7 +87,7 @@ Typst 还支持书写行内的代码，就像 Markdown 一样，比如 `return n
 
 // 附页
 #show: Appendix.with(
-  bibliographyFile: "reference.bib"
+  bibliographyFile: "reference.yml"
 )
 
 #pagebreak()
