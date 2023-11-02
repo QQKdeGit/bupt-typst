@@ -186,15 +186,32 @@
       equationCounter.update(1)
 
       align(center)[
-        #text(size: 16pt, [第#chineseNumMap(levels.at(0))章#h(1em)#it.body])
+        #grid(
+          rows: 16pt,
+          columns: (1fr),
+          [],
+          text(size: 16pt, [第#chineseNumMap(levels.at(0))章#h(1em)#it.body]),
+          []
+        )
       ]
     } else if it.level == 2 {
-      numbering("1.1", ..levels)
-      text(size: 14pt, h(1em) + it.body)
+      grid(
+        rows: (7pt, 14pt, 7pt),
+        columns: (1fr),
+        [],
+        [#numbering("1.1", ..levels)
+         #text(size: 14pt, h(1em) + it.body)],
+        []
+      )
     } else {
-      set par(first-line-indent: 2em)
-      numbering("1.1", ..levels)
-      text(size: 12pt, h(1em) + it.body)
+      grid(
+        rows: (6pt, 12pt, 6pt),
+        columns: (1fr),
+        [],
+        [#h(2em) #numbering("1.1", ..levels)
+         #text(size: 12pt, h(1em) + it.body)],
+        []
+      )
     }
   })
 
