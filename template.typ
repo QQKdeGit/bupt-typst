@@ -207,7 +207,7 @@
   set page(
     header: [
       #align(center)[
-        #pad(bottom: -4pt)[
+        #pad(bottom: -8pt)[
           #pad(bottom: -8pt,
             text(font: FONTSET.at("Song"), size: 9pt, "北京邮电大学本科毕业设计 (论文)")
           )
