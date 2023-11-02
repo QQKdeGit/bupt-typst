@@ -27,3 +27,4 @@ typst compile main.typ
 ## 其他
 
 - typst 在 0.9.0 (2023/10/31) 版本新增了中西文之间自动添加空格的功能，但似乎有 bug。
+- 参考文献的标准应该是 `GB/T 7714-2015`，但 typst 官方给的 bibliography 文档中 style 字符串的值是 `"gb-7114-2015-numeric"`。
