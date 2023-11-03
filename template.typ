@@ -246,6 +246,16 @@
   body
 }
 
+#let primary_heading(
+  title
+) = {
+  grid(
+    columns: (1fr),
+    rows: (16pt, 16pt, 16pt),
+    [], [#title], []
+  )
+}
+
 #let Figure(
   file,
   caption,
