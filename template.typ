@@ -146,7 +146,7 @@
       }
 
       if i.level == 1 {
-        set text(font: (FONTSET.at("English"), FONTSET.at("Hei")), size: 12pt, weight: "semibold")
+        set text(font: FONTSET.at("Hei"), size: 12pt, weight: "semibold")
 
         if i.body != [参考文献] and i.body != [致#h(2em)谢] and i.body != [附#h(2em)录] {
           [第#chineseNumMap(chapterCounter)章#h(1em)]
