@@ -177,7 +177,7 @@
 
     // 重置段首空格
     set par(first-line-indent: 0em)
-    set text(font: (FONTSET.at("English"), FONTSET.at("Hei")), weight: "semibold")
+    set text(font: (FONTSET.at("Hei")), weight: "semibold")
 
     if it.level == 1 {
       // 重置计数器
