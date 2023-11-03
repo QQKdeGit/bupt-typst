@@ -188,6 +188,7 @@
       align(center)[
         #grid(
           rows: (1em),
+          row-gutter: 0.2em,
           columns: (1fr),
           [],
           text(size: 16pt, [第#chineseNumMap(levels.at(0))章#h(1em)#it.body]),
@@ -251,6 +252,7 @@
 ) = {
   grid(
     columns: (1fr),
+    row-gutter: 0.2em,
     rows: (1em, 1em, 1em),
     [], [#title], []
   )
