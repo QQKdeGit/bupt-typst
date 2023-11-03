@@ -44,6 +44,12 @@
 
 这是一幅图。
 
+#Figure(
+  "images/Apple-Shenzhen.jpg",
+  [Apple 深圳万象城零售店],
+  80%
+)
+
 == 表格示例
 
 #Table(
