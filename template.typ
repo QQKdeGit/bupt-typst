@@ -187,7 +187,7 @@
 
       align(center)[
         #grid(
-          rows: 16pt,
+          rows: (1em),
           columns: (1fr),
           [],
           text(size: 16pt, [第#chineseNumMap(levels.at(0))章#h(1em)#it.body]),
@@ -196,7 +196,7 @@
       ]
     } else if it.level == 2 {
       grid(
-        rows: (7pt, 14pt, 7pt),
+        rows: (0.5em, 1em, 0.5em),
         columns: (1fr),
         [],
         [#numbering("1.1", ..levels)
@@ -205,7 +205,7 @@
       )
     } else {
       grid(
-        rows: (6pt, 12pt, 6pt),
+        rows: (0.5em, 1em, 0.5em),
         columns: (1fr),
         [],
         [#h(2em) #numbering("1.1", ..levels)
@@ -251,7 +251,7 @@
 ) = {
   grid(
     columns: (1fr),
-    rows: (16pt, 16pt, 16pt),
+    rows: (1em, 1em, 1em),
     [], [#title], []
   )
 }
