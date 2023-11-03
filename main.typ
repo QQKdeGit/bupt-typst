@@ -18,7 +18,7 @@
   abstractEN: [
     English Abstract.
     
-    Long English Abstract Long English Abstract Long English Abstract Long English Abstract Long English Abstract.
+    The quick brown fox jumps over the lazy dog and runs away. The quick brown fox jumps over the lazy dog and runs away. The quick brown fox jumps over the lazy dog and runs away. 
   ],
   keywordsEN: ("BUPT", "undergraduate", "thesis", "template", "example"),
 )
