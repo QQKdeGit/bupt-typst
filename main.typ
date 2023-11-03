@@ -119,9 +119,11 @@ Typst 还支持书写行内的代码，就像 Markdown 一样，比如 `return n
 
 但是 Typst 的中文与英文和数字之间的空格并没有像 LaTeX 那样自动空出，所以就需要自己手打了。
 
-#pagebreak()
-
 #set page(footer: none)
 
+#pagebreak()
+#primary_heading([= 外#h(1em)文#h(1em)资#h(1em)料])
+
+#pagebreak()
 #primary_heading([= 外#h(1em)文#h(1em)译#h(1em)文])
 
