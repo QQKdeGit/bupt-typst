@@ -4,7 +4,7 @@
 
 ## 字体
 
-模版使用的默认黑体为「思源黑体」；默认宋体为「思源宋体」。如需修改，可将 `template.typ` 文件中 `FONTSET` 里的 `Hei` 和 `Song` 改为你想要的字体（例如 `"STHeiti"` 和 `"STSong"`，即华文黑体和华文宋体）。
+模版使用的默认黑体为「[思源黑体](https://github.com/adobe-fonts/source-han-sans)」；默认宋体为「[思源宋体](https://github.com/adobe-fonts/source-han-serif)」。如需修改，可将 `template.typ` 文件中 `FONTSET` 里的 `Hei` 和 `Song` 改为你想要的字体（例如 `"STHeiti"` 和 `"STSong"`，即华文黑体和华文宋体）。
 
 ## 在线编辑
 
