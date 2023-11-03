@@ -22,7 +22,7 @@
   // 参考文献
   if bibliographyFile != none {
     pagebreak()
-    [= 参考文献]
+    primary_heading([= 参考文献])
     
     set text(font: (FONTSET.at("English"), FONTSET.at("Song")), size: 10.5pt)
     set par(first-line-indent: 0em)
