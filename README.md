@@ -6,6 +6,10 @@
 
 模版使用的默认黑体为「思源黑体」；默认宋体为「思源宋体」。如需修改，可将 `template.typ` 文件中 `FONTSET` 里的 `Hei` 和 `Song` 改为你想要的字体（例如 `"STHeiti"` 和 `"STSong"`，即华文黑体和华文宋体）。
 
+## 在线编辑
+
+你可以通过 [Typst 官网](https://typst.app) 在线编辑，具体使用见 [bupt-typst](https://github.com/QQKdeGit/bupt-typst)。
+
 ## 本地编译
 
 ### macOS
@@ -26,7 +30,7 @@ typst compile main.typ
 
 ### Windows
 
-见 [Typst](https://github.com/typst/typst) 的 `README`
+见 [Typst 仓库](https://github.com/typst/typst) 的 `README` 中 Installation 一节。
 
 ## 其他
 
