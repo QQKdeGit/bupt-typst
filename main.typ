@@ -82,7 +82,7 @@ $ S = pi r^2 $
 
 == 引用示例
 
-这是一个参考文献的引用@webster_social_media 。但是具体的格式还不正确。@cn_ref
+这是一个参考文献 @cn_ref 的引用 @webster_social_media 。
 
 == 代码示例
 
