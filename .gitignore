@@ -1,3 +1,5 @@
 *.ttf
+*.otf
 *.exe
+*.pdf
 .DS_Store
