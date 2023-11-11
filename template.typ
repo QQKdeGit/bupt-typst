@@ -28,12 +28,11 @@
 )
 
 #let FONTSET = (
-  English: "Times New Roman",
-  Hei:     "Source Han Sans SC",
-  Song:    "Source Han Serif SC",
-  Kai:     "STKaiti",
+  Hei:     "Noto Sans CJK SC",
+  Song:    "Noto Serif CJK SC",
+  Kai:     "FZKai-Z03",
+  English: "STIX Two Text",
 )
-// #set text(font: "STIX Two Text")
 
 #let tableCounter    = counter("Table")
 #let figureCounter   = counter("Figure")
@@ -86,7 +85,7 @@
 
   // 中文摘要
   align(center)[
-      #set text(font: FONTSET.at("Hei"), weight: "semibold")
+      #set text(font: FONTSET.at("Hei"), weight: "bold")
       #text(size: FONTSIZE.SanHao, titleZH) \ \
       #text(size: FONTSIZE.XiaoSan, tracking: 1em, "摘要") \ \
   ]
@@ -96,7 +95,7 @@
   abstractZH
 
   [\ \ ]
-  text(font: FONTSET.at("Hei"), weight: "semibold", size: FONTSIZE.XiaoSi, h(2em) + "关键词")
+  text(font: FONTSET.at("Hei"), weight: "bold", size: FONTSIZE.XiaoSi, h(2em) + "关键词")
   text(size: FONTSIZE.XiaoSi,
     for value in keywordsZH {
       h(1em) + value
@@ -106,13 +105,13 @@
 
   // 英文摘要
   align(center)[
-      #text(weight: "semibold", size: FONTSIZE.SanHao, titleEN) \ \
-      #text(weight: "semibold", size: FONTSIZE.XiaoSan, "ABSTRACT") \ \
+      #text(weight: "bold", size: FONTSIZE.SanHao, titleEN) \ \
+      #text(weight: "bold", size: FONTSIZE.XiaoSan, "ABSTRACT") \ \
   ]
   abstractEN
 
   [\ \ ]
-  text(weight: "semibold", size: FONTSIZE.XiaoSi, h(2em) + "KEY WORDS")
+  text(weight: "bold", size: FONTSIZE.XiaoSi, h(2em) + "KEY WORDS")
   text(size: FONTSIZE.XiaoSi,
     for value in keywordsEN {
       h(1em) + value
@@ -140,7 +139,7 @@
     set par(first-line-indent: 0em)
 
     align(center)[
-      #text(font: FONTSET.at("Hei"), weight: "semibold", tracking: 2em, size: FONTSIZE.SanHao, [目录\ \ ])
+      #text(font: FONTSET.at("Hei"), weight: "bold", tracking: 2em, size: FONTSIZE.SanHao, [目录\ \ ])
     ]
 
     let chapterCounter    = 1
@@ -154,7 +153,7 @@
       }
 
       if i.level == 1 {
-        set text(font: (FONTSET.at("Hei")), size: FONTSIZE.XiaoSi, weight: "semibold")
+        set text(font: (FONTSET.at("Hei")), size: FONTSIZE.XiaoSi, weight: "bold")
 
         if i.body != [参考文献] and i.body != [致#h(2em)谢] and i.body != [附#h(2em)录] {
           [第#chineseNumMap(chapterCounter)章#h(1em)]
@@ -192,7 +191,7 @@
 
     // 重置段首空格
     set par(first-line-indent: 0em)
-    set text(font: FONTSET.at("Hei"), weight: "semibold")
+    set text(font: FONTSET.at("Hei"), weight: "bold")
 
     if it.level == 1 {
       // 重置计数器
@@ -234,30 +233,8 @@
 
   // 引用
   show cite: it => {
-    text(font: FONTSET.at("English"), super(it))
+    text(font: FONTSET.at("English"), it)
   }
-
-  // 页眉页脚
-  set page(
-    header: [
-      #align(center)[
-        #pad(bottom: -4pt)[
-          #pad(bottom: -8pt,
-            text(font: FONTSET.at("Song"), size: 9pt, "北京邮电大学本科毕业设计(论文)")
-          )
-          #line(length: 100%, stroke: 0.5pt)
-        ]
-      ]
-    ],
-    footer: [
-      #align(center)[
-        #text(font: FONTSET.at("English"), size: 9pt)[
-          #counter(page).display()
-        ]
-      ]
-    ]
-  )
-  counter(page).update(1)
 
   // 页眉页脚
   set page(
@@ -265,7 +242,7 @@
       #align(center)[
         #pad(bottom: -8pt)[
           #pad(bottom: -8pt,
-            text(font: FONTSET.at("Song"), size: FONTSIZE.XiaoWu, "北京邮电大学本科毕业设计 (论文)")
+            text(font: FONTSET.at("Song"), size: FONTSIZE.XiaoWu, "北京邮电大学本科毕业设计（论文）")
           )
           #line(length: 100%, stroke: 0.5pt)
         ]
@@ -285,27 +262,6 @@
   body
 }
 
-// 附录部分
-// #let Appendix(
-//   body
-// ) = {
-//   show heading: it => locate(loc => {
-//     set par(first-line-indent: 0em)
-    
-//     let levels = counter(heading).at(loc)
-
-//     if it.level == 1 {
-//       align(center)[
-//         #text(font: FONTSET.at("Hei"), size: FONTSIZE.SanHao, it.body)
-//       ]
-//     } else if it.level == 2 {
-//       text(size: FONTSIZE.SiHao, it.body)
-//     }
-//   })
-
-//   body
-// }
-
 #let primary_heading(
   title
 ) = {
@@ -315,6 +271,46 @@
     rows: (1em, 1em, 1em),
     [], [#title], []
   )
+}
+
+// 附录部分
+#let Appendix(
+  bibliographyFile: none,
+  
+  body
+) = {
+  show heading: it => locate(loc => {
+    set par(first-line-indent: 0em)
+    
+    let levels = counter(heading).at(loc)
+
+    if it.level == 1 {
+      align(center)[
+        #text(font: FONTSET.at("Hei"), size: FONTSIZE.SanHao, it.body)
+      ]
+    } else if it.level == 2 {
+      text(size: FONTSIZE.SiHao, it.body)
+    }
+  })
+
+  // 参考文献
+  if bibliographyFile != none {
+    pagebreak()
+    primary_heading([= 参考文献])
+    
+    set text(font: (FONTSET.at("English"), FONTSET.at("Song")), size: FONTSIZE.WuHao)
+    set par(first-line-indent: 0em)
+    bibliography(
+      bibliographyFile, 
+      title: none,
+      style: "gb-7114-2015-numeric"
+    )
+    show bibliography: it => {
+
+    }
+  }
+
+  body
 }
 
 // 图

@@ -1,5 +1,4 @@
 #import "template.typ": *
-#import "appendix.typ": *
 
 #show: BUPTBachelorThesis.with(
   titleZH: "这是一个本科毕业设计的中文标题",
