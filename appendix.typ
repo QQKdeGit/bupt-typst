@@ -12,21 +12,25 @@
 
     if it.level == 1 {
       align(center)[
-        #text(font: FONTSET.at("Hei"), size: 16pt, it.body)
+        #text(font: FONTSET.at("Hei"), size: FONTSIZE.SanHao, it.body)
       ]
     } else if it.level == 2 {
-      text(size: 14pt, it.body)
+      text(size: FONTSIZE.SiHao, it.body)
     }
   })
 
   // 参考文献
   if bibliographyFile != none {
     pagebreak()
-    [= 参考文献]
+    primary_heading([= 参考文献])
     
-    set text(font: (FONTSET.at("English"), FONTSET.at("Song")), size: 10.5pt)
+    set text(font: (FONTSET.at("English"), FONTSET.at("Song")), size: FONTSIZE.WuHao)
     set par(first-line-indent: 0em)
-    bibliography(bibliographyFile, title: none)
+    bibliography(
+      bibliographyFile, 
+      title: none,
+      style: "gb-7114-2015-numeric"
+    )
     show bibliography: it => {
 
     }

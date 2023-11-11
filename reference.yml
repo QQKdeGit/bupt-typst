@@ -1,0 +1,17 @@
+webster_social_media: {
+    type: Book,
+    title: Harry Potter and the Order of the Phoenix,
+    author: "Rowling, J. K.",
+    volume: 5,
+    page-total: 768,
+    date: 2003-06-21,
+}
+
+cn_ref: {
+    type: Web,
+    title: 中文引用，思源宋体,
+    serial-number: v2.5,
+    author: 中文作者,
+    url: https://source.typekit.com/source-han-serif/cn/,
+    date: 2024,
+}

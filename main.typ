@@ -2,13 +2,15 @@
 #import "appendix.typ": *
 
 #show: BUPTBachelorThesis.with(
-  titleZH: "这是一个毕业设计的中文标题",
+  titleZH: "这是一个本科毕业设计的中文标题",
   abstractZH: [
     中文摘要。
     
-    长中文摘要长中文摘要长中文摘要长中文摘要长中文摘要长中文摘要长中文摘要长中文摘要长中文摘要。
+    那只敏捷的棕毛 fox 跳过那只懒狗，消失得无影无踪。
     
-    中 English 混杂测试。
+    那只敏捷的棕毛狐狸 jumps over 那只懒狗，消失得无影无踪。
+
+    思源宋体也和它的兄弟字体思源黑体一样针对屏幕显示进行了优化，但前者具有截然不同的风格，适合用于文学性较强的文本或优雅、时尚的标题。它的打印效果也非常优美。
   ],
   keywordsZH: ("北京邮电大学", "本科生", "毕业设计", "模板", "示例"),
 
@@ -16,7 +18,7 @@
   abstractEN: [
     English Abstract.
     
-    Long English Abstract Long English Abstract Long English Abstract Long English Abstract Long English Abstract.
+    The quick brown fox jumps over the lazy dog and runs away. The quick brown fox jumps over the lazy dog and runs away. The quick brown fox jumps over the lazy dog and runs away. 
   ],
   keywordsEN: ("BUPT", "undergraduate", "thesis", "template", "example"),
 )
@@ -26,11 +28,32 @@
 
 我认为 Typst 介于 LaTeX 和 Markdown 之间。在你开始使用这个模板之前，你可以对 LaTeX 不那么熟悉，但确保你对 Markdown 有一定了解，并且我建议学习一下如何使用 Typst 。
 
+== 段落示例
+
+二级标题和三级标题的段前和段后都增加了 0.5 行间距。如果二级标题和三级标题之间没有内容，两者的间距会直接叠加，而不是像 Word 那样自动设置。
+
+=== 三级标题
+
+=== 另一个三级标题
+
+我是标题下的第一个段落。我前面没有缩进。
+
+我上面的段落没有 2 个全角空格的缩进，但是我有。我也不知道为什么。
+
+=== 最后一个三级标题
+
+#h(2em)
+我也是标题下的第一个段落，但是我前面有缩进，因为我的上一行有一个函数。
+
 == 图示例
 
-#Figure("images/bupt.png", "北京邮电大学校徽", 30%)
-
 这是一幅图。
+
+#Figure(
+  "images/Apple-Shenzhen.jpg",
+  [Apple 深圳万象城零售店],
+  80%
+)
 
 == 表格示例
 
@@ -60,7 +83,7 @@ $ S = pi r^2 $
 
 == 引用示例
 
-这是一个参考文献的引用@webster_social_media 。但是具体的格式还不正确。
+这是一个参考文献的引用@webster_social_media 。但是具体的格式还不正确。@cn_ref
 
 == 代码示例
 
@@ -77,16 +100,17 @@ Typst 还支持书写行内的代码，就像 Markdown 一样，比如 `return n
 
 // 附页
 #show: Appendix.with(
-  bibliographyFile: "reference.bib"
+  bibliographyFile: "reference.yml"
 )
 
 #pagebreak()
-= 致#h(2em)谢
+#primary_heading([= 致#h(2em)谢])
 
 谢谢你北邮，因为有你，温暖了四季。
 
 #pagebreak()
-= 附#h(2em)录
+#primary_heading([= 附#h(2em)录])
+
 #set heading(outlined: false)
 
 == 附录 1
@@ -95,6 +119,11 @@ Typst 还支持书写行内的代码，就像 Markdown 一样，比如 `return n
 
 但是 Typst 的中文与英文和数字之间的空格并没有像 LaTeX 那样自动空出，所以就需要自己手打了。
 
+#set page(footer: none)
+
 #pagebreak()
-= 外#h(1em)文#h(1em)译#h(1em)文
+#primary_heading([= 外#h(1em)文#h(1em)资#h(1em)料])
+
+#pagebreak()
+#primary_heading([= 外#h(1em)文#h(1em)译#h(1em)文])
 
