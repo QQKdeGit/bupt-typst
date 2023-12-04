@@ -296,7 +296,12 @@
     pagebreak()
     primary_heading([= 参考文献])
     
-    set text(font: (FONTSET.at("English"), FONTSET.at("Song")), size: FONTSIZE.WuHao)
+    set text(
+      font: (FONTSET.at("English"), 
+      FONTSET.at("Song")), 
+      size: FONTSIZE.WuHao, 
+      lang: "zh"
+    )
     set par(first-line-indent: 0em)
     bibliography(
       bibliographyFile, 
