@@ -28,7 +28,7 @@
 )
 
 #let FONTSET = (
-  Hei:     "Noto Sans CJK SC",
+  Hei:     ("Inter", "Noto Sans CJK SC"),
   Song:    "Noto Serif CJK SC",
   Kai:     "FZKai-Z03",
   English: "STIX Two Text",
@@ -125,9 +125,7 @@
       [
         #align(center)[
           #text(font: FONTSET.at("English"), size: FONTSIZE.XiaoWu)[
-            // 这里默认了摘要只有 2 页
-            // TODO: 更改成自动获取摘要页数
-            #romanNumMap(calc.abs(loc.page() - 2))
+            #romanNumMap(counter(page).at(loc).at(0))
           ]
         ]
       ]
@@ -160,22 +158,22 @@
         }
 
         if i.body == [致#h(2em)谢] {
-          [致#h(2em)谢 #box(width: 1fr, repeat[.]) #calc.abs(i.location().page() - loc.page())\ ]
+          [致#h(2em)谢 #box(width: 1fr, repeat[.]) #counter(page).at(i.location()).at(0)\ ]
         } else if i.body == [附#h(2em)录] {
-          [附#h(2em)录 #box(width: 1fr, repeat[.]) #calc.abs(i.location().page() - loc.page())\ ]
+          [附#h(2em)录 #box(width: 1fr, repeat[.]) #counter(page).at(i.location()).at(0)\ ]
         } else {
-          [#i.body #box(width: 1fr, repeat[.]) #calc.abs(i.location().page() - loc.page())\ ]
+          [#i.body #box(width: 1fr, repeat[.]) #counter(page).at(i.location()).at(0)\ ]
         }
 
         chapterCounter = chapterCounter + 1
         sectionCounter = 1
       } else if i.level == 2 {
-        [#h(1em)#calc.abs(chapterCounter - 1)\.#sectionCounter#h(1em)#i.body #box(width: 1fr, repeat[.]) #calc.abs(i.location().page() - loc.page())\ ]
+        [#h(1em)#calc.abs(chapterCounter - 1)\.#sectionCounter#h(1em)#i.body #box(width: 1fr, repeat[.]) #counter(page).at(i.location()).at(0)\ ]
 
         sectionCounter += 1
         subsectionCounter = 1
       } else if i.level == 3 {
-        [#h(2em)#calc.abs(chapterCounter - 1)\.#calc.abs(sectionCounter - 1)\.#subsectionCounter#h(1em)#i.body #box(width: 1fr, repeat[.]) #calc.abs(i.location().page() - loc.page())\ ]
+        [#h(2em)#calc.abs(chapterCounter - 1)\.#calc.abs(sectionCounter - 1)\.#subsectionCounter#h(1em)#i.body #box(width: 1fr, repeat[.]) #counter(page).at(i.location()).at(0)\ ]
 
         subsectionCounter += 1
       }
