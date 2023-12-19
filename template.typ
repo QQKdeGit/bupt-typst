@@ -306,7 +306,7 @@
     bibliography(
       bibliographyFile, 
       title: none,
-      style: "gb-7114-2015-numeric"
+      style: "gb-7714-2015-numeric"
     )
     show bibliography: it => {
 
