@@ -184,50 +184,53 @@
 
   // 章节标题配置  
   set heading(numbering: "1.1")
-  show heading: it => locate(loc => {
-    let levels = counter(heading).at(loc)
+  show heading: it => {
+    locate(loc => {
+      let levels = counter(heading).at(loc)
 
-    // 重置段首空格
-    set par(first-line-indent: 0em)
-    set text(font: FONTSET.at("Hei"), weight: "bold")
+      // 重置段首空格
+      set par(first-line-indent: 0em)
+      set text(font: FONTSET.at("Hei"), weight: "bold")
 
-    if it.level == 1 {
-      // 重置计数器
-      tableCounter.update(1)
-      figureCounter.update(1)
-      equationCounter.update(1)
+      if it.level == 1 {
+        // 重置计数器
+        tableCounter.update(1)
+        figureCounter.update(1)
+        equationCounter.update(1)
 
-      align(center)[
-        #grid(
-          rows: (1em),
-          row-gutter: 0.2em,
+        align(center)[
+          #grid(
+            rows: (1em),
+            row-gutter: 0.2em,
+            columns: (1fr),
+            [],
+            text(size: FONTSIZE.SanHao, [第#chineseNumMap(levels.at(0))章#h(1em)#it.body]),
+            []
+          )
+        ]
+      } else if it.level == 2 {
+        grid(
+          rows: (0.5em, 1em, 0.5em),
           columns: (1fr),
           [],
-          text(size: FONTSIZE.SanHao, [第#chineseNumMap(levels.at(0))章#h(1em)#it.body]),
-          []
+          [#numbering("1.1", ..levels)
+        #text(size: FONTSIZE.SiHao, h(1em) + it.body)],
+        []
         )
-      ]
-    } else if it.level == 2 {
-      grid(
-        rows: (0.5em, 1em, 0.5em),
-        columns: (1fr),
-        [],
-        [#numbering("1.1", ..levels)
-      #text(size: FONTSIZE.SiHao, h(1em) + it.body)],
-      []
-      )
-      
-    } else {
-      grid(
-        rows: (0.5em, 1em, 0.5em),
-        columns: (1fr),
-        [],
-        [#h(2em) #numbering("1.1", ..levels)
-      #text(size: FONTSIZE.XiaoSi, h(1em) + it.body)],
-      []
-      )
-    }
-  })
+        
+      } else {
+        grid(
+          rows: (0.5em, 1em, 0.5em),
+          columns: (1fr),
+          [],
+          [#h(2em) #numbering("1.1", ..levels)
+        #text(size: FONTSIZE.XiaoSi, h(1em) + it.body)],
+        []
+        )
+      }
+    })
+    text()[#v(-0.6em, weak: true)];text()[#h(0em)]
+  }
 
   // 引用
   show cite: it => {
